@@ -122,12 +122,12 @@ input {
   }
 .div1 {
     overflow-y: scroll;
-    height: 40vh
+    height: 50vh
 }
 
 .div2 {
   overflow-y: scroll;
-  height: 40vh;
+  height: 50vh;
 }
 .done {
   background-color: blue;
