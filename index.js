@@ -173,9 +173,6 @@ function displayTasks() {
         }}
 
 
-
-
-
       task_div.appendChild(newdiv)
       task_div.appendChild(div1)
       task_div.appendChild(div2);
