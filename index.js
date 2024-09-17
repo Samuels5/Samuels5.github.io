@@ -41,14 +41,19 @@ function displayTasks() {
     localStorage.setItem("task-count", count.toString());
   }
   tasks.innerHTML = "";
+  const w = document.createElement("div");
+  w.className = "w"
   for (let i = 0; i <= Number(localStorage.getItem("task-count")); i++) {
     console.log(localStorage.getItem("task" + i.toString()));
     if (localStorage.getItem("task" + i.toString()) != null) {
+      const task_div1 = document.createElement("div");
       const task = localStorage.getItem("task" + i.toString());
       const task_div = document.createElement("div");
       const content_paragraph = document.createElement("p");
+      const content_paragraph1 = document.createElement("p");
       task_div.className = "task-div";
-      content_paragraph.className = "content_paragraph";
+      task_div1.className = "task-div";
+      content_paragraph1.className = "content_paragraph1";
       content_paragraph.style.marginRight = "20px";
       const edit_btn = document.createElement("button");
       const delete_btn = document.createElement("button");
@@ -65,6 +70,7 @@ function displayTasks() {
         if (edited_content.length>0) {
           edit_btn.parentElement.childNodes[1].innerHTML = edited_content;
         localStorage.setItem("task" + i.toString(), edited_content);
+        displayTasks();
         }
       });
       delete_btn.addEventListener("click", 
@@ -76,11 +82,13 @@ function displayTasks() {
         displayTasks();}
       });
       content_paragraph.appendChild(document.createTextNode(task));
+      content_paragraph1.appendChild(document.createTextNode(task));
       const newdiv = document.createElement("div");
       newdiv.className = "new"
       newdiv.appendChild(edit_btn);
       newdiv.appendChild(content_paragraph);
       newdiv.appendChild(delete_btn);
+      task_div1.appendChild(content_paragraph1);
       const div1 = document.createElement("div");
       div1.className = "dd"
       const user = document.createElement("input");
@@ -92,6 +100,8 @@ function displayTasks() {
 
       const div2 = document.createElement("div");
       div2.className = "div2"
+      const div3 = document.createElement("div");
+      div3.className = "div2";
 
       user.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
@@ -129,6 +139,7 @@ function displayTasks() {
             localStorage.setItem("task-count" + i.toString(), count.toString());
         }
         div2.innerHTML = "";
+        div3.innerHTML = "";
         for (let j = 0; j <= Number(localStorage.getItem("task-count" + i.toString())); j++) {
             console.log(localStorage.getItem("task" + i.toString() + j.toString()));
             if (localStorage.getItem("task" + i.toString() + j.toString()) != null) {
@@ -154,11 +165,15 @@ function displayTasks() {
                   edit_btn.parentElement.parentElement.childNodes[0].innerHTML =
                     edited_content;
                 localStorage.setItem("task" + i.toString() + j.toString(), edited_content);
+                displayTasks();
                 }
             });
             delete_btn.addEventListener("click", () => {
                 delete_btn.parentElement.parentElement.remove();
+                const val = localStorage.getItem("task" + i.toString() + j.toString());
+                localStorage.setItem("did" + i.toString() + j.toString(), val);
                 localStorage.removeItem("task" + i.toString() + j.toString());
+                displayTasks()
             });
             content_paragraph.appendChild(document.createTextNode(task));
             const newdiv = document.createElement("div");
@@ -170,12 +185,63 @@ function displayTasks() {
             newdiv1.className = 'divv'
             newdiv.appendChild(newdiv1);
             div2.appendChild(newdiv)
-        }}
+          }
+          if (localStorage.getItem("did" + i.toString() + j.toString()) != null) {
+            const task = localStorage.getItem("did" + i.toString() + j.toString());
+            const task_div = document.createElement("div");
+            const content_paragraph = document.createElement("p");
+            task_div.className = "task-div";
+            content_paragraph.className = "content_paragraph";
+            content_paragraph.style.marginRight = "20px";
+            const edit_btn = document.createElement("button");
+            const delete_btn = document.createElement("button");
+            edit_btn.className = "edit-btn1";
+            delete_btn.className = "delete-btn";
+            edit_btn.appendChild(document.createTextNode("Edit"));
+            delete_btn.appendChild(document.createTextNode("delete"));
+            edit_btn.style.marginRight = "20px";
+            edit_btn.addEventListener("click", () => {
+                let edited_content = prompt(
+                "Enter the modified to-do?",
+                localStorage.getItem("task" + i.toString() + + j.toString())
+                );
+                if (edited_content.length>0) {
+                  edit_btn.parentElement.parentElement.childNodes[0].innerHTML =
+                    edited_content;
+                localStorage.setItem("task" + i.toString() + j.toString(), edited_content);
+                }
+            });
+            delete_btn.addEventListener("click", () => {
+                delete_btn.parentElement.parentElement.remove();
+                const val = localStorage.getItem("task" + i.toString() + j.toString());
+                localStorage.removeItem("did" + i.toString() + j.toString());
+                displayTasks()
+            });
+            content_paragraph.appendChild(document.createTextNode(task));
+            const newdiv = document.createElement("div");
+            const newdiv1 = document.createElement("div");
+            newdiv.className = "new1"
+            newdiv.appendChild(content_paragraph);
+            // newdiv1.appendChild(edit_btn);
+            newdiv1.appendChild(delete_btn);
+            newdiv1.className = 'divv'
+            newdiv.appendChild(newdiv1);
+            div3.appendChild(newdiv)
+        }
+        }
 
 
       task_div.appendChild(newdiv)
       task_div.appendChild(div1)
       task_div.appendChild(div2);
+      task_div1.appendChild(div3);
       tasks.appendChild(task_div);
+      w.appendChild(task_div1);
     }
-  }}
+  }
+  const txt = document.createElement("p");
+  txt.appendChild(document.createTextNode('Compelited tasks ->'));
+  txt.className = 'txt'
+  tasks.appendChild(txt)
+tasks.appendChild(w)
+}

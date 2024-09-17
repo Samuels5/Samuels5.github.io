@@ -29,6 +29,15 @@ button {
   background-color: #e60000;
 }
 
+.txt {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: blueviolet;
+  margin-right: 15px;
+  padding: 10px;
+}
 .edit-btn {
   background-color: yellowgreen;
   width: 120px;
@@ -158,6 +167,9 @@ img {
   align-items: center;
   justify-content: space-evenly;
 }
+.w {
+  display: flex;
+}
 
 @media only screen and (max-width: 768px) {
     img {
@@ -166,4 +178,8 @@ img {
     .all {
       min-height: 77vh;
     }
+}
+
+.content_paragraph1{
+  text-align: center;
 }
