@@ -89,6 +89,7 @@ main {
 
 .task-div {
   margin-top: 5px;
+  min-width: 300px;
   /* margin-bottom: 10px; */
   height: 100%;
   align-items: center;
@@ -138,6 +139,10 @@ input {
   overflow-y: scroll;
   height: 50vh;
 }
+.div22 {
+  overflow-y: scroll;
+  height: 60vh;
+}
 .done {
   background-color: blue;
 }
@@ -170,7 +175,11 @@ img {
 .w {
   display: flex;
 }
-
+.content_paragraph1 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  size: 10px;
+}
 @media only screen and (max-width: 768px) {
     img {
       display: none;

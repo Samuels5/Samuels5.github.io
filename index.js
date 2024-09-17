@@ -44,7 +44,7 @@ function displayTasks() {
   const w = document.createElement("div");
   w.className = "w"
   for (let i = 0; i <= Number(localStorage.getItem("task-count")); i++) {
-    console.log(localStorage.getItem("task" + i.toString()));
+    // console.log(localStorage.getItem("task" + i.toString()));
     if (localStorage.getItem("task" + i.toString()) != null) {
       const task_div1 = document.createElement("div");
       const task = localStorage.getItem("task" + i.toString());
@@ -64,7 +64,7 @@ function displayTasks() {
       edit_btn.style.marginRight = "20px";
       edit_btn.addEventListener("click", () => {
         let edited_content = prompt(
-          "Enter the modified to-do?",
+          "Enter the modified name",
           localStorage.getItem("task" + i.toString())
         );
         if (edited_content.length>0) {
@@ -92,6 +92,7 @@ function displayTasks() {
       const div1 = document.createElement("div");
       div1.className = "dd"
       const user = document.createElement("input");
+      user.placeholder = "Add new task"
       div1.appendChild(user)
       const add = document.createElement("button");
       add.className = "adding";
@@ -101,7 +102,7 @@ function displayTasks() {
       const div2 = document.createElement("div");
       div2.className = "div2"
       const div3 = document.createElement("div");
-      div3.className = "div2";
+      div3.className = "div22";
 
       user.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
@@ -158,7 +159,7 @@ function displayTasks() {
             edit_btn.style.marginRight = "20px";
             edit_btn.addEventListener("click", () => {
                 let edited_content = prompt(
-                "Enter the modified to-do?",
+                "Enter the modified task",
                 localStorage.getItem("task" + i.toString() + + j.toString())
                 );
                 if (edited_content.length>0) {
@@ -191,7 +192,7 @@ function displayTasks() {
             const task_div = document.createElement("div");
             const content_paragraph = document.createElement("p");
             task_div.className = "task-div";
-            content_paragraph.className = "content_paragraph";
+            content_paragraph.className = "content_paragraph1";
             content_paragraph.style.marginRight = "20px";
             const edit_btn = document.createElement("button");
             const delete_btn = document.createElement("button");
@@ -202,7 +203,7 @@ function displayTasks() {
             edit_btn.style.marginRight = "20px";
             edit_btn.addEventListener("click", () => {
                 let edited_content = prompt(
-                "Enter the modified to-do?",
+                "Enter the modified task",
                 localStorage.getItem("task" + i.toString() + + j.toString())
                 );
                 if (edited_content.length>0) {
