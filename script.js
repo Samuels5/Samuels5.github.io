@@ -195,12 +195,12 @@ function displayTasks() {
             const task_div = document.createElement("div");
             const content_paragraph = document.createElement("p");
             task_div.className = "task-div";
-            content_paragraph.className = "content_paragraph1";
+            content_paragraph.className = "content_paragraph1 ";
             content_paragraph.style.marginRight = "20px";
             const edit_btn = document.createElement("button");
             const delete_btn = document.createElement("button");
             edit_btn.className = "edit-btn1";
-            delete_btn.className = "delete-btn";
+            delete_btn.className = "delete-btn1";
             edit_btn.appendChild(document.createTextNode("Edit"));
             delete_btn.appendChild(document.createTextNode("delete"));
             edit_btn.style.marginRight = "20px";

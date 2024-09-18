@@ -23,9 +23,17 @@ button {
 }
 .delete-btn {
   background-color: #ff4d4f;
-  width: 70px;
+  width: 120px;
 }
 .delete-btn:hover {
+  background-color: #e60000;
+}
+
+.delete-btn1 {
+  background-color: #ff4d4f;
+  width: 60px;
+}
+.delete-btn1:hover {
   background-color: #e60000;
 }
 
@@ -41,6 +49,26 @@ button {
 .edit-btn {
   background-color: yellowgreen;
   width: 120px;
+}
+
+.cool {
+      text-align: center;
+    font-family: 'Oswald', Helvetica, sans-serif;
+    font-size: 17px;
+    /* transform: skewY(-5deg); */
+    letter-spacing: 4px;
+    /* word-spacing: -8px; */
+    color: tomato;
+    text-shadow: 
+      -1px -1px 0 firebrick,
+      -2px -2px 0 firebrick,
+      -3px -3px 0 firebrick,
+      -4px -4px 0 firebrick,
+      -5px -5px 0 firebrick,
+      -6px -6px 0 firebrick,
+      -7px -7px 0 firebrick,
+      -8px -8px 0 firebrick,
+      -30px 20px 40px dimgrey;
 }
 
 .edit-btn:hover {
