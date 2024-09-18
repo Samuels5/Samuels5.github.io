@@ -141,6 +141,8 @@ function displayTasks() {
         }
         div2.innerHTML = "";
         div3.innerHTML = "";
+        let count1 = 1;
+        let count2 = 1;
         for (let j = 0; j <= Number(localStorage.getItem("task-count" + i.toString())); j++) {
             console.log(localStorage.getItem("task" + i.toString() + j.toString()));
             if (localStorage.getItem("task" + i.toString() + j.toString()) != null) {
@@ -176,7 +178,8 @@ function displayTasks() {
                 localStorage.removeItem("task" + i.toString() + j.toString());
                 displayTasks()
             });
-            content_paragraph.appendChild(document.createTextNode(task));
+            content_paragraph.appendChild(document.createTextNode(count1.toString() + '.' + task));
+            count1 = count1 + 1;
             const newdiv = document.createElement("div");
             const newdiv1 = document.createElement("div");
             newdiv.className = "new1"
@@ -218,7 +221,8 @@ function displayTasks() {
                 localStorage.removeItem("did" + i.toString() + j.toString());
                 displayTasks()
             });
-            content_paragraph.appendChild(document.createTextNode(task));
+            content_paragraph.appendChild(document.createTextNode(count2.toString() + '.' + task));
+            count2 = count2 + 1;
             const newdiv = document.createElement("div");
             const newdiv1 = document.createElement("div");
             newdiv.className = "new1"
