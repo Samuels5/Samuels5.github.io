@@ -151,6 +151,10 @@ input {
   overflow-y: scroll;
   height: 50vh;
 }
+.div21{
+  overflow-y: scroll;
+  height: 60vh;
+}
 .div22 {
   overflow-y: scroll;
   height: 60vh;
@@ -241,6 +245,7 @@ img {
   padding-bottom: 10px;
 }
 .task-div11 {
+  /* overflow-y: scroll; */
   margin-top: 5px;
   min-width: 500px;
   /* margin-bottom: 10px; */

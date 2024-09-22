@@ -297,7 +297,7 @@ function displayTasks() {
             content_paragraph.className = "content_paragraph";
             const delete_btn = document.createElement("button");
             delete_btn.className = "done";
-            delete_btn.appendChild(document.createTextNode("Done"));
+            delete_btn.appendChild(document.createTextNode("Complited"));
             const edit_btn = document.createElement("button");
             edit_btn.className = "edit-btn1";
             edit_btn.appendChild(document.createTextNode("Edit"));
@@ -477,7 +477,7 @@ function displayTasks() {
       const d2 = document.createElement('div') 
       d2.className = 'dd2'
       const para1 = document.createElement('p')
-      para1.appendChild(document.createTextNode((count2-1).toString() + ' compited tasks'));
+      para1.appendChild(document.createTextNode((count2-1).toString() + ' complited tasks'));
       para1.className = "t1";
       d2.appendChild(para1)
       d2.appendChild(dd2)
@@ -495,6 +495,7 @@ function displayTasks() {
   }
   const task_divnew = document.createElement("div");
   const task_divnew1 = document.createElement("div");
+  task_divnew1.className = "div21";
   task_divnew.className = "task-div11";
   // console.log(localStorage.getItem("delete"));
   let d = 0
