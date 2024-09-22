@@ -79,6 +79,7 @@ button:hover {
   background-color: rgba(15, 15, 152, 0.643);
 }
 .content_paragraph {
+    margin-right: 133px;
   /* overflow-x: scroll; */
   /* width: 200px;
   border-radius: 14px;
@@ -221,6 +222,10 @@ img {
   background-color: blue;
   padding: 5px;
 }
+.dd4 {
+  background-color:aqua;
+  padding: 5px;
+}
 .dd3 {
   background-color: yellow;
   padding: 5px;
@@ -252,4 +257,9 @@ img {
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+}
+
+.cost {
+  background-color:cadetblue;
+  margin-left: 10px;
 }

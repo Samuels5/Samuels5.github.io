@@ -59,7 +59,6 @@ function displayTasks() {
       task_div.className = "task-div";
       task_div1.className = "task-div";
       content_paragraph1.className = "content_paragraph1";
-      content_paragraph.style.marginRight = "20px";
       const edit_btn = document.createElement("button");
       const delete_btn = document.createElement("button");
       edit_btn.className = "edit-btn";
@@ -113,6 +112,8 @@ function displayTasks() {
       dd2.className = 'dd2';
       const dd3 = document.createElement("div");
       dd3.className = 'dd3';
+      const dd4 = document.createElement("div");
+      dd4.className = "dd4";
       div3.className = "div22";
 
       user.addEventListener("keydown", function (event) {
@@ -204,10 +205,12 @@ function displayTasks() {
         dd1.innerHTML = "";
         dd2.innerHTML = "";
         dd3.innerHTML = "";
+        dd4.innerHTML = "";
         div3.innerHTML = "";
         let count1 = 1;
         let count2 = 1;
         let count3 = 1;
+        let count4 = 1;
         for (let j = 0; j <= Number(localStorage.getItem("task-count" + i.toString())); j++) {
             // console.log(localStorage.getItem("task" + i.toString() + j.toString()));
             if (localStorage.getItem("task" + i.toString() + j.toString()) != null) {
@@ -224,7 +227,6 @@ function displayTasks() {
             tot.appendChild(tim);
             task_div.className = "task-div";
             content_paragraph.className = "content_paragraph";
-            content_paragraph.style.marginRight = "20px";
             const edit_btn = document.createElement("button");
             const delete_btn = document.createElement("button");
             edit_btn.className = "edit-btn1";
@@ -293,13 +295,12 @@ function displayTasks() {
             tot.appendChild(tim);
             task_div.className = "task-div";
             content_paragraph.className = "content_paragraph";
-            content_paragraph.style.marginRight = "20px";
-            const edit_btn = document.createElement("button");
             const delete_btn = document.createElement("button");
-            edit_btn.className = "edit-btn1";
             delete_btn.className = "done";
-            edit_btn.appendChild(document.createTextNode("Edit"));
             delete_btn.appendChild(document.createTextNode("Done"));
+            const edit_btn = document.createElement("button");
+            edit_btn.className = "edit-btn1";
+            edit_btn.appendChild(document.createTextNode("Edit"));
             edit_btn.style.marginRight = "20px";
             edit_btn.addEventListener("click", () => {
                 let edited_content = prompt(
@@ -317,6 +318,16 @@ function displayTasks() {
                 delete_btn.parentElement.parentElement.remove();
                 const val = localStorage.getItem("ongoing" + i.toString() + j.toString());
                 localStorage.setItem("did" + i.toString() + j.toString(), val);
+                localStorage.removeItem("ongoing" + i.toString() + j.toString());
+                displayTasks()
+            });
+            const delete_btn2 = document.createElement("button");
+            delete_btn2.className = "cost";
+            delete_btn2.appendChild(document.createTextNode("cost_saving"));
+            delete_btn2.addEventListener("click", () => {
+                delete_btn.parentElement.parentElement.remove();
+                const val = localStorage.getItem("ongoing" + i.toString() + j.toString());
+                localStorage.setItem("cost" + i.toString() + j.toString(), val);
                 localStorage.removeItem("ongoing" + i.toString() + j.toString());
                 displayTasks()
             });
@@ -343,11 +354,53 @@ function displayTasks() {
             newdiv1.appendChild(tot);
             newdiv1.appendChild(edit_btn);
             newdiv1.appendChild(delete_btn);
+            newdiv1.appendChild(delete_btn2);
             newdiv1.appendChild(delete_btn1);
             newdiv1.className = 'divv'
             newdiv.appendChild(newdiv1);
             dd3.appendChild(newdiv)
           }
+          if (localStorage.getItem("cost" + i.toString() + j.toString()) != null) {
+            const tot = document.createElement("div");
+            tot.className = "tot";
+            const dat = document.createElement("p");
+            const tim = document.createElement("p");
+            dat.appendChild(document.createTextNode(localStorage.getItem("day" + i.toString() + j.toString())));
+            tim.appendChild(document.createTextNode(localStorage.getItem("hour" + i.toString() + j.toString())));
+            tot.appendChild(dat);
+            tot.appendChild(tim);
+            const task = localStorage.getItem("cost" + i.toString() + j.toString());
+            const task_div = document.createElement("div");
+            const content_paragraph = document.createElement("p");
+            task_div.className = "task-div";
+            content_paragraph.className = "content_paragraph1 ";
+            const delete_btn = document.createElement("button");
+            delete_btn.className = "delete-btn1";
+            delete_btn.appendChild(document.createTextNode("delete"));
+            delete_btn.addEventListener("click", () => {
+              const  answer = prompt(`Are you sure you want to delete ${task} ?`,"Yes")
+                if (answer === "Yes"){
+                delete_btn.parentElement.parentElement.remove();
+                const val = localStorage.getItem("cost" + i.toString() + j.toString());
+                const num = Number(localStorage.getItem('delete'))
+                localStorage.setItem("delete" + num.toString(),name +" "+ "cost saving" + ' ' + localStorage.getItem("cost" + i.toString() + j.toString())+ " " + localStorage.getItem("day" + i.toString() + j.toString())+' ' + localStorage.getItem("hour" + i.toString() + j.toString()));
+                localStorage.setItem('delete',(num+1).toString())
+                localStorage.removeItem("cost" + i.toString() + j.toString());
+                displayTasks()
+              }
+            });
+            content_paragraph.appendChild(document.createTextNode(count4.toString() + '.' + task));
+            count4 = count4 + 1;
+            const newdiv = document.createElement("div");
+            const newdiv1 = document.createElement("div");
+            newdiv.className = "new1"
+            newdiv.appendChild(content_paragraph);
+            newdiv1.appendChild(tot);
+            newdiv1.appendChild(delete_btn);
+            newdiv1.className = 'divv'
+            newdiv.appendChild(newdiv1);
+            dd4.appendChild(newdiv)
+        }
           if (localStorage.getItem("did" + i.toString() + j.toString()) != null) {
             const tot = document.createElement("div");
             tot.className = "tot";
@@ -362,7 +415,6 @@ function displayTasks() {
             const content_paragraph = document.createElement("p");
             task_div.className = "task-div";
             content_paragraph.className = "content_paragraph1 ";
-            content_paragraph.style.marginRight = "20px";
             const delete_btn = document.createElement("button");
             delete_btn.className = "delete-btn1";
             delete_btn.appendChild(document.createTextNode("delete"));
@@ -375,7 +427,8 @@ function displayTasks() {
                 localStorage.setItem("delete" + num.toString(),name +" "+ "complited" + ' ' + localStorage.getItem("did" + i.toString() + j.toString())+ " " + localStorage.getItem("day" + i.toString() + j.toString())+' ' + localStorage.getItem("hour" + i.toString() + j.toString()));
                 localStorage.setItem('delete',(num+1).toString())
                 localStorage.removeItem("did" + i.toString() + j.toString());
-                displayTasks()}
+                displayTasks()
+              }
             });
             content_paragraph.appendChild(document.createTextNode(count2.toString() + '.' + task));
             count2 = count2 + 1;
@@ -410,6 +463,16 @@ function displayTasks() {
       d1.appendChild(dd1)
       div2.appendChild(d1);
     }
+    if (count4 > 1) {
+      const d1 = document.createElement('div') 
+      d1.className = 'dd4'
+      const para1 = document.createElement('p')
+      para1.appendChild(document.createTextNode((count4-1).toString() + ' cost saving'));
+      para1.className = "t1";
+      d1.appendChild(para1)
+      d1.appendChild(dd4)
+      div2.appendChild(d1);
+    }
     if (count2 > 1) {
       const d2 = document.createElement('div') 
       d2.className = 'dd2'
@@ -442,7 +505,7 @@ function displayTasks() {
       const content_paragraph = document.createElement("p");
       content_paragraph.appendChild(document.createTextNode(d.toString() + "."+task));
       const just = document.createElement('div')
-      just.className = 'just'
+      just.className = 'just';
       const delete_btn = document.createElement('button')
       delete_btn.className = "delete-btn1";
       delete_btn.appendChild(document.createTextNode("delete"));
